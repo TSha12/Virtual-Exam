@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Online Exam Portal</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">College Exam Portal</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="features">
+        <h1>Key Features</h1>
+        <div class="feature-list">
+            <div class="feature">
+                <h3>Secure Exams</h3>
+                <p>Our platform ensures a safe and fair exam environment.</p>
+            </div>
+            <div class="feature">
+                <h3>Easy Access</h3>
+                <p>Students and teachers can access exams from anywhere.</p>
+            </div>
+            <div class="feature">
+                <h3>Automated Grading</h3>
+                <p>Instant grading and analytics help track performance.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 College Exam Portal. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

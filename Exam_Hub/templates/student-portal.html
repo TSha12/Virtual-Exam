@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'student-portal' %}">Home</a>
+        <a href="{% url 'student-login' %}">Logout</a>
+    </nav>
+    
+    <div class="container">
+        <h2>Welcome, {{ student.username }}</h2>
+
+        <!-- View Lessons Section -->
+        <h3>Your Lessons</h3>
+        <ul class="lesson-list">
+            {% for lesson in lessons %}
+                <li>
+                    <strong>{{ lesson.title }}</strong> - 
+                    <a href="{{ lesson.file.url }}" target="_blank">View Lesson</a>
+                </li>
+            {% empty %}
+                <li>No lessons available</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Available Exams Section -->
+        <h3>Available Exams</h3>
+        <ul class="exam-list">
+            {% for exam in exams %}
+                <li>
+                    <strong>{{ exam.subject }}</strong> - {{ exam.date }} 
+                    <a href="{% url 'take-exam' exam.id %}" class="btn">Take Exam</a>
+                </li>
+            {% empty %}
+                <li>No exams available</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Available Question Papers Section -->
+        <h3>Available Question Papers</h3>
+        <ul class="question-paper-list">
+            {% for paper in question_papers %}
+                <li>
+                    <strong>{{ paper.title }}</strong> - {{ paper.subject }}
+                    <a href="{% url 'view_question_paper' paper.id %}" class="btn">View Questions</a>
+                </li>
+            {% empty %}
+                <li>No question papers available</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Exam Results Section -->
+        <h3>Your Exam Results</h3>
+        <table class="results-table">
+            <tr>
+                <th>Exam</th>
+                <th>Score</th>
+                <th>Status</th>
+            </tr>
+            {% for result in results %}
+            <tr>
+                <td>{{ result.exam.name }}</td>
+                <td>{{ result.score }}</td>
+                <td class="{% if result.score >= 50 %}pass{% else %}fail{% endif %}">
+                    {% if result.score >= 50 %}Pass{% else %}Fail{% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">No results available</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

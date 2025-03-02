@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Portal</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">College Exam Portal</div>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <a href="teacher-login.html" class="btn">Teacher Login</a>
+                <a href="student-login.html" class="btn">Student Login</a>
+                <a href="teacher-signup.html" class="btn signup">Teacher Sign Up</a>
+                <a href="student-signup.html" class="btn signup">Student Sign Up</a>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Welcome to the Online Exam Portal</h1>
+        <p>Conduct and participate in exams seamlessly from anywhere.</p>
+        <a href="signup.html" class="btn primary">Get Started</a>
+    </section>
+    
+    <section id="features" class="features">
+        <h2>Why Choose Our Exam Portal?</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <h3>Secure Exams</h3>
+                <p>Advanced security ensures a fair exam environment.</p>
+            </div>
+            <div class="feature">
+                <h3>Easy Access</h3>
+                <p>Students and teachers can access exams from anywhere.</p>
+            </div>
+            <div class="feature">
+                <h3>Automated Results</h3>
+                <p>Instant grading and analytics for performance tracking.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2>Contact Information</h2>
+        <p>Email: support@collegeexamportal.com</p>
+        <p>Phone: +1 234 567 890</p>
+        <p>Address: 123 College Street, City, Country</p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 College Exam Portal. All rights reserved.</p>
+    </footer>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

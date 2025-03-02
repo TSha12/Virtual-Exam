@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Online Exam Portal</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<div class="container">
+    <h2>Question Papers</h2>
+    
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Subject</th>
+            <th>Total Marks</th>
+            <th>Actions</th>
+        </tr>
+        {% for paper in question_papers %}
+        <tr>
+            <td>{{ paper.title }}</td>
+            <td>{{ paper.subject }}</td>
+            <td>{{ paper.total_marks }}</td>
+            <td>
+                {% if paper.id %}
+                    <a href="{% url 'view_question_paper' paper.id %}" class="btn btn-primary">View Paper</a>
+                    <a href="{% url 'add_question' paper.id %}" class="btn btn-success">Add Question</a>
+                {% else %}
+                    <span class="error-message">No Paper Available</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'add_question_paper' %}" class="edit-profile">Create New Question Paper</a>
+</div>
+</body>
+</html>

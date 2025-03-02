@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Teacher Profile</h2>
+        <p><strong>Name:</strong> {{ teacher.name }}</p>
+        <p><strong>Email:</strong> {{ teacher.email }}</p>
+        <p><strong>Subjects:</strong> {{ teacher.subjects }}</p>
+
+        <h3>Exams Created</h3>
+        <ul>
+            {% for exam in exams %}
+                <li>{{ exam.name }} - {{ exam.date }}</li>
+            {% empty %}
+                <p>No exams added yet.</p>
+            {% endfor %}
+        </ul>
+
+        <h3>Lessons Created</h3>
+        <ul>
+            {% for lesson in lessons %}
+                <li>{{ lesson.title }}</li>
+            {% empty %}
+                <p>No lessons added yet.</p>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'teacher-portal' %}">Back to Portal</a>
+    </div>
+</body>
+</html>

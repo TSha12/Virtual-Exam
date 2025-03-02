@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Online Exam Portal</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<div class="container">
+    <h2>Add Question Paper</h2>
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Question Paper</button>
+    </form>
+    <a href="{% url 'list_question_papers' %}" class="edit-profile">View Question Papers</a>
+</div>
+</body>
+</html>

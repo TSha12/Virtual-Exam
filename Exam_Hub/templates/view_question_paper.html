@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Online Exam Portal</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+<h2>Questions for "{{ question_paper.title }}"</h2>
+<table border="1">
+    <tr>
+        <th>Question</th>
+        <th>Options</th>
+        <th>Correct Answer</th>
+        <th>Time Limit (Sec)</th>
+        <th>Marks</th>
+    </tr>
+    {% for question in questions %}
+    <tr>
+        <td>{{ question.text }}</td>
+        <td>
+            A. {{ question.option_1 }} <br>
+            B. {{ question.option_2 }} <br>
+            {% if question.option_3 %} C. {{ question.option_3 }} <br> {% endif %}
+            {% if question.option_4 %} D. {{ question.option_4 }} {% endif %}
+        </td>
+        <td>{{ question.correct_option }}</td>
+        <td>{{ question.time_limit }}</td>
+        <td>{{ question.marks }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% if question_paper %}
+    <a href="{% url 'add_question' question_paper.id %}">Add Question</a>
+{% else %}
+    <p>Invalid Question Paper</p>
+{% endif %}
+</body>
+</html>
